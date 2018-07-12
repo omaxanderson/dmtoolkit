@@ -1,0 +1,14 @@
+{
+  "name": "dmtoolkit",
+  "version": "1.0.0",
+  "description": "An application to assit DM's with organizing and planning their world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "O Maxwell Anderson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
