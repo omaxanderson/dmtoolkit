@@ -1,18 +1,60 @@
-<div class='container'>
-	<h1>Login Page</h1>
-	<form action='/login' method='POST' class='col-sm-4 offset-sm-4'>
-		<div class='form-group'>
-			<label for='loginUsername'>Username</label>
-			<input type='text' name='loginUsername' class='form-control' autofocus>
-		</div>
-		<div class='form-group'>
-			<label for='loginPassword'>Password</label>
-			<input type='password' name='loginPassword' class='form-control'>
-		</div>
-		<button type='submit' class='btn btn-primary' value='submit'>Submit</button>
-		<div class='mt-3 text-danger'>{{err}}</div>
-	</form>
+<div class='container mt-4'>
+	<h1 class='d-flex justify-content-center'>DM's Toolkit</h1>
 
+	<div class='row mt-5'>
+	
+		<div class='col-lg-4 offset-lg-2'>
+			<div class='card'>
+				<h4 class='card-header raleway'>Login</h4>
+				<div class='card-body'>
+					<form action='/login' method='POST'>
+						<div class='form-group'>
+							<label for='loginUsername'>Username</label>
+							<input type='text' name='loginUsername' class='form-control' autofocus>
+						</div>
+						<div class='form-group'>
+							<label for='loginPassword'>Password</label>
+							<input type='password' name='loginPassword' class='form-control'>
+						</div>
+						<button type='submit' class='btn btn-primary' value='submit'>Submit</button>
+						<div class='mt-3 text-danger'>{{err}}</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
+		<div class='col-lg-4 ml-2 mt-4 mt-lg-0'>
+			<div class='card'>
+				<h4 class='card-header raleway'>Register</h4>
+
+				<div class='card-body'>
+					<form action='/register' method='POST'>
+						<div class='form-group'>
+							<label for='regEmail'>Email</label>
+							<input type='text' name='regEmail' class='form-control' autofocus>
+						</div>
+						<div class='text-danger mt-0 mb-4'>{{registerEmailErr}}</div>
+						
+						<div class='form-group'>
+							<label for='regUsername'>Username</label>
+							<input type='text' name='regUsername' class='form-control' autofocus>
+						</div>
+						<div class='text-danger mt-0 mb-4'>{{registerUsernameErr}}</div>
+
+						<div class='form-group'>
+							<label for='regPassword'>Password</label>
+							<input type='password' name='regPassword' class='form-control'>
+						</div>
+						<div class='form-group'>
+							<label for='regPassword'>Confirm Password</label>
+							<input type='password' name='regPasswordConf' class='form-control'>
+						</div>
+						<div class='text-danger mt-0 mb-4'>{{registerPasswordErr}}</div>
+						<button type='submit' class='btn btn-primary' value='submit'>Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
