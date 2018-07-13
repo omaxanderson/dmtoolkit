@@ -6,6 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo');
+var session = require('express-session');
+var handlebars = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,9 +24,17 @@ db.once('open', function() {
 	console.log("DB connection successful");
 });
 
+// Session setup
+app.use(session({
+	secret: "avatar aang",
+	resave: true,
+	saveUninitialized: false
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
 app.use(express.json());
