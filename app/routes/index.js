@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var htmlspecialchars = require('htmlspecialchars');
 
 /* GET requests */
 router.get('/', function(req, res, next) {
