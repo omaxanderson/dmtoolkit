@@ -1,9 +1,10 @@
+<div class='container'>
 <div class='center-align'>
-	<h1 class=''>DM's Toolkit</h1>
+	<h1 class='my-3'>DM's Toolkit</h1>
 
-	<div class='row '>
-	
-		<div class='card col l4 offset-l2'>
+	<div class='row'>
+
+		<div class='card col s12 m5'>
 			<div class='card-content'>
 				<h4 class='card-title raleway'>Login</h4>
 				<form action='/login' method='POST'>
@@ -11,19 +12,21 @@
 						<input type='text' id='loginUsername' name='loginUsername' class='' autofocus>
 						<label for='loginUsername'>Username</label>
 					</div>
+					<div class='red-text' id='loginUsernameError'></div>
 					<div class='input-field'>
 						<input type='password' id='loginPassword' name='loginPassword' class='validate'>
 						<label for='loginPassword'>Password</label>
 					</div>
-					<button type='submit' class='btn waves-effect waves-light' value='submit'>Submit
+					<div class='red-text' id='loginPasswordError'></div>
+					<button id='loginButton' type='submit' class='btn waves-effect waves-light' value='submit'>Log In
 						<i class="material-icons right">send</i>	
 					</button>
-					<div class='mt-4 red-text'>{{err}}</div>
+					<div class='red-text'>{{err}}</div>
 				</form>
 			</div>
 		</div>
 
-		<div class='card col l4'>
+		<div class='card col s12 m5 right'>
 			<div class='card-content'>
 				<h4 class='card-title raleway'>Register</h4>
 
@@ -37,23 +40,27 @@
 						
 						<div class='input-field'>
 							<input type='text' id='regUsername' name='regUsername' class='validate'>
-							<label for='regUsername'>Username</label>
+							<label for='regUsername' data-error="Error: only letters, numbers, and underscores are allowed.">Username</label>
 						</div>
+						<div class='red-text' id='regUsernameError'></div>
 						<div class='red-text'>{{registerUsernameErr}}</div>
 
 						<div class='input-field'>
 							<input type='password' id='regPassword'  name='regPassword' class='validate'>
 							<label for='regPassword'>Password</label>
 						</div>
+						<div class='red-text' id='regPasswordError'></div>
 						<div class='input-field'>
 							<input type='password' id='regPasswordConf' name='regPasswordConf' class='validate'>
 							<label for='regPasswordConf'>Confirm Password</label>
 						</div>
 						<div class='red-text'>{{registerPasswordErr}}</div>
-						<button type='submit' class='btn btn-primary' value='submit'>Submit</button>
+						<button id='registerButton' type='submit' class='btn btn-primary' value='submit'>Register</button>
 					</form>
 			</div>
 		</div>
 	</div>
 </div>
+</div>
 
+<script src='js/login.js'></script>
