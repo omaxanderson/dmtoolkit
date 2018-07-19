@@ -3,6 +3,22 @@ var router = express.Router();
 var User = require('../models/user');
 var htmlspecialchars = require('htmlspecialchars');
 
+// Authentication middleware
+function auth(request) {
+	User.findOne({_id: req.session.userId}).exec(function(err, user) {
+		if (err) {
+			console.log(err);
+			return res.render('login');
+		} else if (!user) {
+			console.log("User not found");
+			return res.render('login', {err: "Internal server error"});
+		} else {
+			data.username = user.username
+			return res.render('profile', data);
+		}
+	});
+}
+
 /* GET requests */
 router.get('/', function(req, res, next) {
   res.redirect('/login');

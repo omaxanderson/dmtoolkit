@@ -28,6 +28,8 @@ $(document).ready(function() {
 		$('#regPasswordConf').removeClass('invalid');
 		$('#regPasswordError').html("");
 	});
+
+	$('.parallax').parallax();
 });
 
 function registerValidate(event) {
@@ -62,6 +64,10 @@ function registerValidate(event) {
 		event.preventDefault();
 	}
 	
+	// Ensure password is at least 6 chars
+	if ($('#regPassword').val().length < 6) {
+	}
+
 }
 
 function loginValidate(event) {
