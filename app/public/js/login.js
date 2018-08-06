@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+	// Just a bunch of event handlers, there might be a better way to do this
 	$('#loginButton').on('click', loginValidate);
 	$('#registerButton').on('click', registerValidate);
 	$('#loginUsername').on('keydown', () => {
@@ -29,7 +30,9 @@ $(document).ready(function() {
 		$('#regPasswordError').html("");
 	});
 
+	// Initialize Materialize JavaScript functions
 	$('.parallax').parallax();
+	$('.modal').modal();
 });
 
 function registerValidate(event) {
@@ -81,4 +84,13 @@ function loginValidate(event) {
 		$('#loginPassword').addClass('invalid');
 		$('#loginPasswordError').html("<div class='mb-2'>Password required!</div>");
 	}
+}
+
+function loginAjax(event) {
+	event.preventDefault();
+
+}
+
+function registerAjax(event) {
+
 }
