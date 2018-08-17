@@ -107,8 +107,12 @@ function loginAjax(event) {
 		method: 'POST',
 		data: loginData,
 		success: function(res) {
-			alert(res);
-			console.log(res);
+			if (res.statusText == "success") {
+				console.log("redirecting");
+				window.location = "http://ec2-18-204-213-184.compute-1.amazonaws.com/profile";
+			} else {
+				console.log("error");
+			}
 		},
 		error: function(xhr, textStatus, err) {
 			alert(err);
@@ -135,12 +139,15 @@ function registerAjax(event) {
 		method: 'POST',
 		data: registerData,
 		success: function(res) {
-			console.log(res);
+			if (res.statusText == "success") {
+				console.log("redirecting");
+				window.location("http://ec2-18-204-213-184.compute-1.amazonaws.com/profile");
+			} else {
+				console.log("error");
+			}
 		},
 		error: function(xhr, textStatus, err) {
-			alert(err);
-			alert(textStatus);
-			console.log(err);
+			console.log("ERROR: " + err);
 			console.log(textStatus);
 		}
 	});

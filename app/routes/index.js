@@ -69,14 +69,21 @@ router.post('/login', function(req, res, next) {
 				var err = new Error("Wrong email or password");
 				err.status = 401;
 				var errMessage = {
-					err: "Incorrect email or password"
+					err: "Incorrect email or password",
+					statusText: "error"
 				}
 				return res.send(errMessage);
 				//return res.render('login', errMessage);
 				//return next(err);
 			} else {
+				// setting the session userid, send back a login success message
 				req.session.userId = user._id;
-				return res.redirect('/profile');
+				var msg = {
+					msg: "Successful Login",
+					statusText: "success"
+				}
+				return res.send(msg);
+				// return res.redirect('/profile');
 				//return res.send("Authentication successful");
 			}
 		});
