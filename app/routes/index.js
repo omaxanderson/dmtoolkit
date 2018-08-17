@@ -59,31 +59,11 @@ router.get('/profile', function(req, res, next) {
 });
 
 /* POST requests */
+
+// Called from login page, should render the profile if successful or an error message on failure
 router.post('/login', function(req, res, next) {
-	if (req.body.email && req.body.username &&
-		req.body.password && req.body.passwordConf) {
 
-		if (req.body.password != req.body.passwordConf) {
-			// return to page with an error message
-			return res.send("passwords don't match");
-		}
-		
-		var userData = {
-			email: req.body.email,
-			username: req.body.username,
-			password: req.body.password,
-		}
-
-		User.create(userData, function(error, user) {
-			if (error) {
-				return next(error);
-			} else {
-				req.session.userId = user._id;
-				console.log("about to redirect");
-				return res.redirect('/profile');
-			}
-		});
-	} else if (req.body.loginUsername && req.body.loginPassword) {
+	if (req.body.loginUsername && req.body.loginPassword) {
 		User.authenticate(req.body.loginUsername, req.body.loginPassword, function(error, user) {
 			if (err || !user) {
 				var err = new Error("Wrong email or password");
@@ -91,7 +71,8 @@ router.post('/login', function(req, res, next) {
 				var errMessage = {
 					err: "Incorrect email or password"
 				}
-				return res.render('login', errMessage);
+				return res.send(errMessage);
+				//return res.render('login', errMessage);
 				//return next(err);
 			} else {
 				req.session.userId = user._id;
@@ -99,8 +80,9 @@ router.post('/login', function(req, res, next) {
 				//return res.send("Authentication successful");
 			}
 		});
+	} else {
+		return res.send("no request username or password");
 	}
-
 });
 
 function checkEmailExists(email, callback) {

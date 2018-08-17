@@ -74,23 +74,74 @@ function registerValidate(event) {
 }
 
 function loginValidate(event) {
+	var success = true;
 	if ($('#loginUsername').val().length == 0) {
+		success = false;
 		event.preventDefault();
 		$('#loginUsername').addClass('invalid');
 		$('#loginUsernameError').html("<div class='mb-2'>Username required!</div>");
 	}
 	if ($('#loginPassword').val().length == 0) {
+		success = false;
 		event.preventDefault();
 		$('#loginPassword').addClass('invalid');
 		$('#loginPasswordError').html("<div class='mb-2'>Password required!</div>");
+	}
+
+	if (success) {
+		event.preventDefault();
+		loginAjax(event);
 	}
 }
 
 function loginAjax(event) {
 	event.preventDefault();
+	var loginData = {
+		loginUsername: $('#loginUsername').val(),
+		loginPassword: $('#loginPassword').val()
+	};
 
+	// TODO fix the ajax call, it's not redirecting on successful login
+	$.ajax({
+		url: 'login',
+		method: 'POST',
+		data: loginData,
+		success: function(res) {
+			alert(res);
+			console.log(res);
+		},
+		error: function(xhr, textStatus, err) {
+			alert(err);
+			alert(textStatus);
+			console.log(err);
+			console.log(textStatus);
+		}
+	});
 }
 
 function registerAjax(event) {
+	event.preventDefault();
 
+	var registerData = {
+		regUsername: $('#regUsername').val(),
+		regPassword: $('#regPassword').val(),
+		regPasswordConf: $('#regPassword').val(),
+		regEmail: $('#regEmail').val(),
+	}
+
+
+	$.ajax({
+		url: 'register',
+		method: 'POST',
+		data: registerData,
+		success: function(res) {
+			console.log(res);
+		},
+		error: function(xhr, textStatus, err) {
+			alert(err);
+			alert(textStatus);
+			console.log(err);
+			console.log(textStatus);
+		}
+	});
 }
